@@ -19,17 +19,17 @@
 
 ### Asociation
 has_many :groups_users
-has_many :groups
+has_many :groups, through :groups_users
 has_many :massages
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|groups_name|string|null: false, unique: true|
+|name|string|null: false, unique: true|
 
 ### Asociation
 has_many :groups_users
-has_many :users
+has_many :users, trough :groups_users
 has_many :massages
 
 ## messagesテーブル
@@ -39,3 +39,7 @@ has_many :massages
 |image|string|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+### Asociation
+belongs_to :group
+belomgs_to :user
